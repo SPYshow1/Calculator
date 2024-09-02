@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="description" content="" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+   
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+IT+Moderna:wght@100..400&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+<title> mine threads </title>
+
+<style>
+
+body {
+ 
+	padding: o
+	box-sizing:border-box;
+	margin: 0;
+	flex-direction: column;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	position:fixed;
+	background: black;
+ 
+}
+
+#inputread{
+
+	max-width: 46%;
+	height: 50px;
+ 	font-size: 2.5rem;
+	text-align: right;
+	margin-bottom: 60px;
+ 	padding: 10px;
+ 	box-sizing: border-box;
+ 	overflow: hidden;  
+ 	background: black;	
+ 	color: #eee;
+ 	text-align:left;
+ 	border: none;
+ 	outline:none;
+ 	letter-spacing: 2px;
+ 
+ }
+
+#display{
+
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	width: 9%;
+	gap: 10px;
+}
+
+button{
+
+	background: #222;
+	width: 70px;
+	height:70px;
+	color: #eee;
+	border: none;
+	outline: none;
+	font-size: 1.2rem;
+	font-weight: bolder;
+	cursor:pointer;
+	border-radius:50px;
+	background: #222;
+	margin-left: 5px;
+	user-select: none
+	
+}
+
+#display-btn{
+
+    color: green;
+    font-size: 35px;
+    font-weight: 400;
+
+}
+
+#display-btns{
+
+	color: red;
+	opacity: 0.8;
+	position:absolute;
+	top: 29%;
+	left: 48%;
+	border-radius: 50px 50px 50px 0px;
+
+}
+
+#displayofpage{
+
+	margin-left: 30px;
+	margin-top: 200px;
+
+}
+
+#column{
+
+	width: 55%;
+	height: 3px;
+	border-radius: 50px;
+	background: grey;
+	opacity: 0.2;
+	position:absolute;
+	margin-top: -25px;
+	
+}
+
+#equal{
+
+    background: green;
+    color: #eee;
+    font-size: 20px;
+
+}
+
+.clo{
+
+    font-size: 25px;
+
+}
+  
+</style>
+
+</head>
+
+<body>
+
+<div id="displayofpage">
+	<input readonly id="inputread">
+		<div id="column"></div>
+	  <div id="display">
+		<button onclick="displaybutton('+')" id="display-btn">+</button>
+		 		  <button onclick="displaybutton('9')">9</button>
+					<button onclick="displaybutton('8')">8</button>
+				  <button onclick="displaybutton('7')">7</button>
+		<button onclick="displaybutton('-')" id="display-btn">-</button>
+				  <button onclick="displaybutton('6')">6</button>
+					<button onclick="displaybutton('5')">5</button>
+				  <button onclick="displaybutton('4')">4</button>
+		<button onclick="displaybutton('*')" id="display-btn"><i class="fa-solid fa-close clo"></i></button>
+				  <button onclick="displaybutton('3')">3</button>
+					<button onclick="displaybutton('2')">2</button>
+			 	  <button onclick="displaybutton('1')">1</button>
+		<button onclick="displaybutton('/')" id="display-btn">÷</button>
+					<button onclick="displaybutton('0')">0</button>
+					<button onclick="displaybutton('.')">.</button>
+				<button onclick="displayequal()" id="equal">=</button>
+		<button onclick="displayclear()" id="display-btn">c</button>
+		    <button onclick="displaybutton('%')">%</button>
+	 	    <button onclick="displaybutton('()')">()</button>
+		<button onclick="displaydelete()" id="display-btns"><i class="fa-solid fa-close"></i></button>
+								
+</div>
+
+<script>
+
+let inputread = document.getElementById("inputread");
+
+function displaybutton(input){
+    inputread.value += input
+    
+};
+
+function displaydelete(){
+    inputread.value = inputread.value.slice(0, -1)
+
+};
+
+function displayclear(){
+    inputread.value = ""
+
+};
+
+function isValidExpression(expression) {
+      return /^[-+*/\d().\s]+$/.test(expression);
+    }
+
+function displayequal(){
+  try{
+    inputread.value = eval(inputread.value)
+    
+    }
+    
+  catch(error){
+    inputread.value = "error"
+  
+  }
+  
+};
+
+
+</script>
+
+</body>
+
+</html>
